@@ -1,0 +1,4 @@
+repository "Lost_In_Thought/Lost_In_Thought@2474362192183@cloud"
+  path "/"
+    br "/main"
+    co "/main"
