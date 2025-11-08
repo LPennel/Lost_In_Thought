@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7313829017964651391}
   - component: {fileID: 4960676089233836035}
   - component: {fileID: -5632823412534092417}
-  - component: {fileID: -5428525918622508739}
+  - component: {fileID: 2321285442545948658}
   m_Layer: 0
   m_Name: TempDamage
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2685930476341895574}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.53, y: -3.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
---- !u!114 &-5428525918622508739
+--- !u!114 &2321285442545948658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

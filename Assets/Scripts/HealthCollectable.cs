@@ -8,7 +8,7 @@ public class HealthCollectable : MonoBehaviour
     public int HealAmount = 1;
 
     void OnTriggerStay2D(Collider2D other){
-        PlayerController controller = other.GetComponent<PlayerController>();
+        PlayerCombat controller = other.GetComponent<PlayerCombat>();
 
         if (controller != null && controller.health < controller.maxHealth)
         {

@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1120978497325303600}
   - component: {fileID: 2346843250815052233}
-  - component: {fileID: 6849869270646441881}
   - component: {fileID: 1715507416175170358}
   - component: {fileID: 5006131189366902002}
+  - component: {fileID: 6849869270646441881}
+  - component: {fileID: 6973224533435708804}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -88,35 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6849869270646441881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2190551463600048912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 827d13b486fd99a498c3630ad505a35d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidbody2d: {fileID: 1715507416175170358}
-  maxHealth: 5
-  timeInvincible: 1
-  MoveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 3e6aae36-55bd-4f79-a5ae-e308db382daf
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  MoveSpeed: 4
-  jumpForce: 20
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!50 &1715507416175170358
 Rigidbody2D:
   serializedVersion: 4
@@ -179,6 +151,50 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &6849869270646441881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190551463600048912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827d13b486fd99a498c3630ad505a35d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody2d: {fileID: 1715507416175170358}
+  canSprint: 0
+  MoveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3e6aae36-55bd-4f79-a5ae-e308db382daf
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  MoveSpeed: 4
+  jumpForce: 20
+  coyoteTime: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &6973224533435708804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190551463600048912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258d7b565cee55f4daf0ee30dd99e5f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackTrigger: {fileID: 2741651640919897113, guid: 84b201e9477327246a23a8d02c94d24f, type: 3}
+  maxHealth: 5
+  timeInvincible: 2
 --- !u!1 &7763124659946710045
 GameObject:
   m_ObjectHideFlags: 0
