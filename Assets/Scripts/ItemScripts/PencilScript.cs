@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class PencilScript : MonoBehaviour
 {
+    private GameObject Crosshair;
     void OnTriggerStay2D(Collider2D other){
-        PlayerCombat controller = other.GetComponent<PlayerCombat>();
+        PlayerController controller = other.GetComponent<PlayerController>();
+        if (controller != null)
+        {
+            Destroy(gameObject);
 
-        controller.ChangeHealth(HealAmount);
-         Destroy(gameObject);
+            Crosshair = GameObject.Find("Crosshair");
+
+            PencilAbillity pencil = Crosshair.GetComponent<PencilAbillity>();
+
+            pencil.canUsePencil = true;
+        }
     }
 }

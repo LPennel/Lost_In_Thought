@@ -54,9 +54,8 @@ public class PlayerController : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-
         //Check if player jumps
-        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0f)
+        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0f && isGrounded)
         {
             jumpRequest = true;
             coyoteTimeCounter = 0f;
@@ -75,7 +74,6 @@ public class PlayerController : MonoBehaviour
             rigidbody2d.velocity = new Vector2((MoveSpeed + 1.5f) * Move, rigidbody2d.velocity.y); //37.5% faster movement
         }
 
-
         //Ground Check Debug Line
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.6f, groundLayer);
         Debug.DrawRay(transform.position, Vector2.down * 0.6f, Color.green);
@@ -92,7 +90,8 @@ public class PlayerController : MonoBehaviour
         // Jump Logic
         if (jumpRequest)
         {
-            rigidbody2d.AddForce(new Vector2(rigidbody2d.velocity.x, jumpForce * 20));
+            rigidbody2d.AddForce(
+                new Vector2(rigidbody2d.velocity.x, jumpForce * 20/Time.timeScale));
             jumpRequest = false;
         }
     }

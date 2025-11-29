@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Lost_In_Thought.sln"
+    "dotnet.defaultSolution": "Lost_In_Thought.slnx",
+    "dotnet.preferCSharpExtension": true
 }
