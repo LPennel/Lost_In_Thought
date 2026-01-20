@@ -15,7 +15,7 @@ public class PlayerCombat : MonoBehaviour
     private int currentHealth;
     private int damageAmount = -5;
     public int damage { get { return damageAmount; } }
-    public float timeInvincible = 2.0f;
+    public float timeInvincible = 0.2f;
     bool isInvincible;
     float damageCooldown;
     // Start is called before the first frame update
