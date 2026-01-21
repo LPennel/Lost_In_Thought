@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class upTrigger : MonoBehaviour
 {
-    private float upForce = 50f;
-
+    public float upForce = 50f;
     void OnTriggerEnter2D(Collider2D collision)
     {
         Rigidbody2D controller = collision.GetComponent<Rigidbody2D>();
