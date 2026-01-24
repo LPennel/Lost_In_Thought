@@ -1,3 +1,5 @@
+//Author: Lawson Pennel
+//Editors:
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
         //Horizontal Movment
         Move = Input.GetAxis("Horizontal");
 
+        // checking for sprint, may need to edit if boot objects get removed
         if (Input.GetButton("Sprint") && canSprint == true && isGrounded == true)
         {
             isSprinting = true;

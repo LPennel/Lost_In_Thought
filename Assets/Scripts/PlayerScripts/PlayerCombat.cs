@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+//Author: Lawson Pennel
+//Editors:
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
@@ -21,6 +21,7 @@ public class PlayerCombat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Get reference to rigid body component and set max health
         playerController = GetComponent<PlayerController>();
         if (playerController != null)
         {
@@ -33,22 +34,30 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Setting movement direction to the direction of the player controller movement
         playerMovementDirection = playerController.direction;
 
+        //Checks if the player is moving right, so a hitbox can be spawned to the right
         if (playerMovementDirection > 0)
         {
             playerDirection = true;
             attackSpawnPosition = new Vector2(rigidbody2D.transform.position.x + 0.75f, rigidbody2D.transform.position.y);
         }
+
+        //Checks if the player is moving left, so a hitbox can be spawned to the left
         else if (playerMovementDirection < 0)
         {
             playerDirection = false;
             attackSpawnPosition = new Vector2(rigidbody2D.transform.position.x - 0.75f, rigidbody2D.transform.position.y);
         }
+
+        //Checks if the player is still but facing right, so a hitbox can be spawned to the right
         else if (playerMovementDirection == 0 && playerDirection == true)
         {
             attackSpawnPosition = new Vector2(rigidbody2D.transform.position.x + 0.75f, rigidbody2D.transform.position.y);
         }
+
+        //Checks if the player is still but facing left, so a hitbox can be spawned to the left
         else if (playerMovementDirection == 0 && playerDirection == false)
         {
             attackSpawnPosition = new Vector2(rigidbody2D.transform.position.x - 0.75f, rigidbody2D.transform.position.y);
@@ -71,6 +80,7 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    //Function to change health that enemies can reference
     public void ChangeHealth(int amount)
     {
         if (amount < 0)
@@ -83,12 +93,15 @@ public class PlayerCombat : MonoBehaviour
             damageCooldown = timeInvincible;
         }
 
+        //Make sure health cant go below zero and cause problems
+        //Display health in Console, Temporary until a UI is made
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
     }
 
     public void Attack()
     {
+        //Spawn an attack trigger and set it combat reference to the player (for damage dealing purposes)
         GameObject AttackTriggerRef = Instantiate(AttackTrigger, attackSpawnPosition, Quaternion.identity);
         PAttackTrigger attackTrigger = AttackTriggerRef.GetComponent<PAttackTrigger>();
         if(attackTrigger != null)

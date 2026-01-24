@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+//Author: Lawson Pennel
+//Editors:
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +13,7 @@ public class PlayerDeath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Get reference to player combat for health reference
         playerCombat = player.GetComponent<PlayerCombat>();
     }
 
@@ -26,6 +26,7 @@ public class PlayerDeath : MonoBehaviour
 
         if(playerHealth == 0)
         {
+            //Resets the scene when the player dies, sets all enemies back to default position
             Scene currentScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(currentScene.name);
         }

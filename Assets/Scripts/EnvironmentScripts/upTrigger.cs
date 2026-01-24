@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+//Author: Lawson Pennel
+//Editors:
 using UnityEngine;
 
 public class upTrigger : MonoBehaviour
 {
+    //Used specifically in level 1 to boost the player upward
     public float upForce = 50f;
     void OnTriggerEnter2D(Collider2D collision)
     {

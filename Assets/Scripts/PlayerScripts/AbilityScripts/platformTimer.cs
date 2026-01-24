@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+//Author: Lawson Pennel
+//Editors:
 using UnityEngine;
 
 public class platformTimer : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int seconds = 4;
+    // Destoys platform after 4 seconds
     void Start()
     {
-        Destroy(gameObject, 4);
+        Destroy(gameObject, seconds);
     }
 }

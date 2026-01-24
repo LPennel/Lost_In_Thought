@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+//Author: Lawson Pennel
+//Editors:
 using UnityEngine;
 
 public class EnemyCombat : MonoBehaviour
@@ -19,6 +19,7 @@ public class EnemyCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Countdown of invincibility timer every frame
         if (isInvincible)
         {
             damageCooldown -= Time.deltaTime;
@@ -31,6 +32,7 @@ public class EnemyCombat : MonoBehaviour
     
     public void ChangeHealth(int amount)
     {
+        //Gives an enenmy short invincibility so it does not get spam attacked to death
         if (isInvincible)
         {
             damageCooldown -= Time.deltaTime;
@@ -40,6 +42,7 @@ public class EnemyCombat : MonoBehaviour
             }
         }
 
+        //Ensures enemy health cant go below zero and cause problems
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         if(currentHealth == 0)
         {
