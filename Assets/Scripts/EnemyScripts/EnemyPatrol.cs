@@ -30,27 +30,6 @@ public class EnemyPatrol : MonoBehaviour
     {
         playerPoint = Player.transform.position;
 
-        //Movement to point B
-        if(currentPoint == pointB.transform.position)
-        {
-            rb.velocity = new Vector2(speed * Time.deltaTime * 50, 0); // Point B must be to the right
-        }
-        //Movement to point A
-        else if(currentPoint == pointA.transform.position)
-        {
-            rb.velocity = new Vector2(-speed * Time.deltaTime * 50, 0); // Point A must be to the left
-        }
-        //Return to spawn point if enemy is to the right of spawn
-        else if(currentPoint == spawnPoint && transform.position.x < spawnPoint.x)
-        {
-            rb.velocity = new Vector2(speed * Time.deltaTime * 50, 0);
-        }
-        //Return to spawn point if enemy is the the left of spawn
-        else if (currentPoint == spawnPoint && transform.position.x > spawnPoint.x)
-        {
-            rb.velocity = new Vector2(-speed * Time.deltaTime * 50, 0);
-        }
-
         //Change point to point A, after reaching point B
         if(Vector2.Distance(transform.position, currentPoint) <= 0.5f && currentPoint == pointB.transform.position)
         {
@@ -76,10 +55,35 @@ public class EnemyPatrol : MonoBehaviour
             currentPoint = playerPoint;
         }
 
-        //Sets the point to the spawn point after chasing the max distance
-        if(Vector2.Distance(transform.position, spawnPoint) > chaseDistance)
+        //Sets the point to the spawn point after chasing the max distance or if player gets to far away
+        if(Vector2.Distance(transform.position, spawnPoint) > chaseDistance 
+        || (Vector2.Distance(transform.position, playerPoint) > chaseDistance && currentPoint == playerPoint))
         {
             currentPoint = spawnPoint;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        //Movement to point B
+        if(currentPoint == pointB.transform.position)
+        {
+            rb.velocity = new Vector2(speed * Time.deltaTime * 50, 0); // Point B must be to the right
+        }
+        //Movement to point A
+        else if(currentPoint == pointA.transform.position)
+        {
+            rb.velocity = new Vector2(-speed * Time.deltaTime * 50, 0); // Point A must be to the left
+        }
+        //Return to spawn point if enemy is to the right of spawn
+        else if(currentPoint == spawnPoint && transform.position.x < spawnPoint.x)
+        {
+            rb.velocity = new Vector2(speed * Time.deltaTime * 50, 0);
+        }
+        //Return to spawn point if enemy is the the left of spawn
+        else if (currentPoint == spawnPoint && transform.position.x > spawnPoint.x)
+        {
+            rb.velocity = new Vector2(-speed * Time.deltaTime * 50, 0);
         }
     }
 
@@ -91,6 +95,4 @@ public class EnemyPatrol : MonoBehaviour
     }
 }
 
-//TODO For some reason changing a variable and then running the game a few times causes the enemy to dramatically speed up ad studder
-//I have no idea why, only seen when changing chase distance, but may happen with other variables
-//The speed increase has nothing to do with the acutal value of the variable itself
+//TODO Enemy may get stuck trying to chase player and not return to spawn/

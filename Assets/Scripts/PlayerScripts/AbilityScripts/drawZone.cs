@@ -11,7 +11,7 @@ public class drawZone : MonoBehaviour
     void Update()
     {
         //Check if the player clicks to draw a platform.
-        if (Input.GetButtonDown("Attack"))
+        if (Input.GetButtonDown("Attack") && pos != Vector2.zero)
         {
             drawPlatform();
         }
@@ -23,6 +23,12 @@ public class drawZone : MonoBehaviour
         crosshair = other.GetComponent<PencilAbillity>();
         
         pos = crosshair.pos;
+    }
+
+    //Changes value of crosshair to null so multiple draw zones dont draw platforms when not suppose to
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        crosshair = null;
     }
 
     //Spawns the platform
