@@ -68,22 +68,22 @@ public class EnemyPatrol : MonoBehaviour
         //Movement to point B
         if(currentPoint == pointB.transform.position)
         {
-            rb.velocity = new Vector2(speed * Time.deltaTime * 50, 0); // Point B must be to the right
+            rb.linearVelocity = new Vector2(speed * Time.deltaTime * 50, 0); // Point B must be to the right
         }
         //Movement to point A
         else if(currentPoint == pointA.transform.position)
         {
-            rb.velocity = new Vector2(-speed * Time.deltaTime * 50, 0); // Point A must be to the left
+            rb.linearVelocity = new Vector2(-speed * Time.deltaTime * 50, 0); // Point A must be to the left
         }
         //Return to spawn point if enemy is to the right of spawn
         else if(currentPoint == spawnPoint && transform.position.x < spawnPoint.x)
         {
-            rb.velocity = new Vector2(speed * Time.deltaTime * 50, 0);
+            rb.linearVelocity = new Vector2(speed * Time.deltaTime * 50, 0);
         }
         //Return to spawn point if enemy is the the left of spawn
         else if (currentPoint == spawnPoint && transform.position.x > spawnPoint.x)
         {
-            rb.velocity = new Vector2(-speed * Time.deltaTime * 50, 0);
+            rb.linearVelocity = new Vector2(-speed * Time.deltaTime * 50, 0);
         }
     }
 

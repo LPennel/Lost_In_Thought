@@ -70,11 +70,11 @@ public class PlayerController : MonoBehaviour
         // Horizontal Movement
         if (isSprinting == false)
         {
-            rigidbody2d.velocity = new Vector2(MoveSpeed * Move, rigidbody2d.velocity.y);
+            rigidbody2d.linearVelocity = new Vector2(MoveSpeed * Move, rigidbody2d.linearVelocity.y);
         }
         else if (isSprinting == true)
         {
-            rigidbody2d.velocity = new Vector2((MoveSpeed + 1.5f) * Move, rigidbody2d.velocity.y); //37.5% faster movement
+            rigidbody2d.linearVelocity = new Vector2((MoveSpeed + 1.5f) * Move, rigidbody2d.linearVelocity.y); //37.5% faster movement
         }
 
         //Ground Check Debug Line
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
         if (jumpRequest)
         {
             rigidbody2d.AddForce(
-                new Vector2(rigidbody2d.velocity.x, jumpForce * 20/Time.timeScale));
+                new Vector2(rigidbody2d.linearVelocity.x, jumpForce * 20/Time.timeScale));
             jumpRequest = false;
         }
     }

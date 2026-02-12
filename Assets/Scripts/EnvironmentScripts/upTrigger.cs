@@ -12,7 +12,7 @@ public class upTrigger : MonoBehaviour
 
         if (controller != null)
         {
-            controller.velocity = new Vector2(controller.velocity.x, 0);
+            controller.linearVelocity = new Vector2(controller.linearVelocity.x, 0);
             controller.AddForce(new Vector2(0, upForce * 15));
         }
     }
