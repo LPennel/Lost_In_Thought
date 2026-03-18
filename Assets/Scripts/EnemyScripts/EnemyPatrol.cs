@@ -33,18 +33,22 @@ public class EnemyPatrol : MonoBehaviour
         //Change point to point A, after reaching point B
         if(Vector2.Distance(transform.position, currentPoint) <= 0.5f && currentPoint == pointB.transform.position)
         {
+            Debug.Log("Reached B");
             currentPoint = pointA.transform.position;
         }
 
         //Change point to point B, after reaching point A
         if(Vector2.Distance(transform.position, currentPoint) <= 0.5f && currentPoint == pointA.transform.position)
         {
+            Debug.Log("Reached A");
             currentPoint = pointB.transform.position;
         }
-
+/*
         //Change point to point B, after reaching spawn point
         if(Vector2.Distance(transform.position, currentPoint) <= 0.5f && currentPoint == spawnPoint)
         {
+            Debug.Log("Reached Spawn");
+            Debug.Log(Vector2.Distance(transform.position, currentPoint));
             currentPoint = pointB.transform.position;
         }
 
@@ -59,8 +63,10 @@ public class EnemyPatrol : MonoBehaviour
         if(Vector2.Distance(transform.position, spawnPoint) > chaseDistance 
         || (Vector2.Distance(transform.position, playerPoint) > chaseDistance && currentPoint == playerPoint))
         {
+            Debug.Log("Return to Spawn");
             currentPoint = spawnPoint;
         }
+        */
     }
 
     void FixedUpdate()
@@ -75,6 +81,19 @@ public class EnemyPatrol : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(-speed * Time.deltaTime * 50, 0); // Point A must be to the left
         }
+
+        /*
+        else if (currentPoint == playerPoint)
+        {
+            if(currentPoint.x < playerPoint.x)
+            {
+                rb.linearVelocity = new Vector2(speed * Time.deltaTime * 50, 0);
+            }
+            else if(currentPoint.x > playerPoint.x)
+            {
+                rb.linearVelocity = new Vector2(-speed * Time.deltaTime * 50, 0);
+            }
+        }
         //Return to spawn point if enemy is to the right of spawn
         else if(currentPoint == spawnPoint && transform.position.x < spawnPoint.x)
         {
@@ -85,6 +104,7 @@ public class EnemyPatrol : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(-speed * Time.deltaTime * 50, 0);
         }
+        */
     }
 
     private void OnDrawGizmos()
@@ -96,3 +116,5 @@ public class EnemyPatrol : MonoBehaviour
 }
 
 //TODO Enemy may get stuck trying to chase player and not return to spawn/
+// Enemy does not register going over the spawn point, and does not set it new point to B
+//May be setting current point incorrectly
